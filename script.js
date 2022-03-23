@@ -27,6 +27,7 @@ class Player {
 		this.setFallSpeedTo = 15;
 		this.birds = [ bird, rsup ];
 		this.birdIndex = 0;
+		this.score = 0;
 	}
 
 	update() {
@@ -41,7 +42,7 @@ class Player {
 	
 	render() {
 		ctx.drawImage(this.birds[this.birdIndex % 2], this.x, this.y);
-		ctx.fillText(pipe.score, 30, 30)
+		ctx.fillText(this.score, 30, 30)
 	}
 
 	jump() {
@@ -55,7 +56,6 @@ class Pipe {
 		this.y = possiblePipeYs[player.birdIndex % 2];
 		this.gap = 200;
 		this.speed = 15;
-		this.score = 0;
 	}
 
 	detectCollision() {
