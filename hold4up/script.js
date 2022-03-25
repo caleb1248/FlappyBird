@@ -41,10 +41,10 @@ class Player {
 		if(this.fallSpeed < this.maxFallSpeed && this.maxFallSpeed < 0) this.fallSpeed = this.maxFallSpeed;
 		this.y += this.fallSpeed;
 		if(this.y > 600-48){
-			this.y = 600-48;
-			this.fallspeed = 0;
-		};
-		if(this.y < 0) this.y = 0;
+			pipe.handleDie();
+		}else if(this.y < 0) {
+			pipe.handleDie();
+		}
 	}
 	
 	render() {
@@ -58,7 +58,7 @@ class Pipe {
 		this.x = 700;
 		this.y = possiblePipeYs[player.birdIndex % 2];
 		this.gap = 200;
-		this.speed = 15;
+		this.speed = 10;
 	}
 
 	detectCollision() {
@@ -94,7 +94,7 @@ class Pipe {
 	}
 }
 
-const possiblePipeYs = [260-381, 100-381];
+const possiblePipeYs = [260-381, 100-381].reverse();
 let player = new Player();
 let pipe = new Pipe();
 
