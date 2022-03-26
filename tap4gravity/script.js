@@ -28,6 +28,7 @@ class Player {
 		this.birds = [ bird, rsup ];
 		this.birdIndex = 0;
 		this.score = 0;
+    this.facing = 0;
 	}
 
 	update() {
@@ -41,12 +42,13 @@ class Player {
 	}
 	
 	render() {
-		ctx.drawImage(this.birds[this.birdIndex % 2], this.x, this.y);
+		ctx.drawImage(this.birds[this.facing % 2], this.x, this.y);
 		ctx.fillText(this.score, 30, 30)
 	}
 
 	jump() {
-		this.fallSpeed = this.setFallSpeedTo;
+		this.gravity = -this.gravity;
+    this.facing++;
 	}
 }
 
@@ -55,13 +57,11 @@ class Pipe {
 		this.x = 700;
 		this.y = possiblePipeYs[player.birdIndex % 2];
 		this.gap = 200;
-		this.speed = 15;
+		this.speed = 10;
 	}
 
 	detectCollision() {
 		if(this.x==player.x) {
-			player.setFallSpeedTo = 0 - player.setFallSpeedTo;
-			player.gravity = 0 - player.gravity;
 			player.birdIndex++;
 			player.score++;
 		}
