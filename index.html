@@ -5,9 +5,71 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown-dark.min.css">
+	<style>
+		.markdown-body {
+			position: absolute;
+			left: 100%;
+			top: 0;
+			width: 100%;
+			bottom: 0;
+			box-sizing: border-box;
+			min-width: 200px;
+			margin: 0 auto;
+			padding: 45px;
+		}
+		
+		html, body {
+			overflow: hidden;
+		}
+
+		@keyframes goback {
+			from {
+				left: 0
+			}
+
+			to {
+				left: 100%;
+			}
+		}
+
+		@keyframes howtoplay {
+			from {
+				left: 100%
+			}
+
+			to {
+				left: 0;
+			}
+		}
+	</style>
 </head>
 <body>
-	<a href="./normal">normal</a>
-	<a href="./hold4up">hold4up</a>
+	<div>
+		<button onclick="showHow()">how to play</button>
+	</div>
+	<div class="markdown-body">
+		<p>In normal mode, click or press spacebar to jump. Every time you pass a pipe, the gravity flips. Have fun!</p>
+		<p>In hold4up, you hold to go up or down, depending on if the bird is upside down or not. Every time you pass a pipe, the gravity flips. Don&#39;t touch the ground!</p>
+		<button onclick="goback()">go back</button>
+	</div>
+	<script>
+		const howtoplay = document.querySelector('.markdown-body');
+		function goback() {
+			howtoplay.style.animation = "goback 2s";
+			setTimeout(() => {
+				howtoplay.style.animation = "none";
+				howtoplay.style.left = "100%"
+			}, 2000);
+		}
+		
+		function showHow() {
+			howtoplay.style.animation = "howtoplay 2s";
+			setTimeout(() => {
+				howtoplay.style.animation = "none";
+				howtoplay.style.left = "0"
+			}, 2000);
+		}
+	</script>
 </body>
 </html>
