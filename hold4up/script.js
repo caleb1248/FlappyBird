@@ -1,11 +1,10 @@
 const canvas = document.querySelector('canvas'),
 	ctx = canvas.getContext('2d'),
-	images = document.querySelector('div'),
-	bird = images.appendChild(document.createElement('img')),
-	bg = images.appendChild(document.createElement('img')),
-	pipeBottom = images.appendChild(document.createElement('img')),
-	pipeTop = images.appendChild(document.createElement('img')),
-	rsup = images.appendChild(document.createElement('img'));
+	bird = addImage('bird.png'),
+	bg = addImage('https://raw.githubusercontent.com/Genius6942/Pygame-Flappy-Bird/main/flap_back.png'),
+	pipeBottom = addImage('https://github.com/Genius6942/Pygame-Flappy-Bird/blob/main/pipe_bottom.png?raw=true'),
+	pipeTop = addImage('https://raw.githubusercontent.com/Genius6942/Pygame-Flappy-Bird/main/pipe_top.png');
+	rsup = addImage('https://raw.githubusercontent.com/Genius6942/Pygame-Flappy-Bird/main/bird1.png');
 
 rsup.src = 'https://raw.githubusercontent.com/Genius6942/Pygame-Flappy-Bird/main/bird1.png'
 bird.src = 'bird.png';
