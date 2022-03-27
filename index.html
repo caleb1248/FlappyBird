@@ -17,10 +17,21 @@
 			min-width: 200px;
 			margin: 0 auto;
 			padding: 45px;
+
+      transition: all 2s;
 		}
+
+    .markdown-body.open {
+      left: 0%;
+    }
 		
 		html, body {
 			overflow: hidden;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 		}
 
 		@keyframes goback {
@@ -42,33 +53,57 @@
 				left: 0;
 			}
 		}
+
+    .ui {
+      display:block;
+      width: 70vw;
+      padding: 20px;
+      background-color:aliceblue;
+      border: none;
+      border-radius: 10px;
+      font-size: 200%;
+    }
+
+    .link {
+      text-decoration: none;
+      color: black;
+    }
+
+    .link:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
 	</style>
 </head>
 <body>
 	<div>
-		<button onclick="showHow()">how to play</button>
+		<button class="ui"  style="cursor: pointer" onclick="showHow()">how to play</button>
+    <br>
+    <button class="ui"><h4>Game Modes</h4></button>
+    <br>
+    <a href="/normal" class="link"><button class="ui link"><div>Normal</div></button></a>
+    <br>
+    <a href="/hold4up" class="link"><button class="ui link"><div>hold4up</div></button></a>
+    <br>
+    <a href="/tap4gravity" class="link"><button class="ui link"><div>tap4gravity</div></button></a>
+    <br>
 	</div>
 	<div class="markdown-body">
-		<p>In normal mode, click or press spacebar to jump. Every time you pass a pipe, the gravity flips. Have fun!</p>
+		<p>In normal mode, click or press spacebar to jump. Every time you pass a pipe, the gravity flips.</p>
 		<p>In hold4up, you hold to go up or down, depending on if the bird is upside down or not. Every time you pass a pipe, the gravity flips. Don&#39;t touch the ground!</p>
-		<button onclick="goback()">go back</button>
+    <p>In tap4gravity, you tap to flip the birds gravity. When you pass a pipe, the gravity doesn't auto-flip.</p>
+    Have fun!
+    <br><br>
+		<button onclick="goback()">Close</button>
 	</div>
 	<script>
 		const howtoplay = document.querySelector('.markdown-body');
 		function goback() {
-			howtoplay.style.animation = "goback 2s";
-			setTimeout(() => {
-				howtoplay.style.animation = "none";
-				howtoplay.style.left = "100%"
-			}, 2000);
+			howtoplay.classList.remove('open');
 		}
 		
 		function showHow() {
-			howtoplay.style.animation = "howtoplay 2s";
-			setTimeout(() => {
-				howtoplay.style.animation = "none";
-				howtoplay.style.left = "0"
-			}, 2000);
+			howtoplay.classList.add('open');
 		}
 	</script>
 </body>
